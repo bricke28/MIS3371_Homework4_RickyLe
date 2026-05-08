@@ -1,0 +1,153 @@
+<!--
+    Name: Ricky Le
+    File: MIS3371hw4RL.html
+    Date Created: 2026-05-1
+    Date Updated: 2026-05-8
+    Purpose: MIS 3371 Homework 4, javascript functionality for the patient registration form
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>I-Fast Care Patient Registration v4</title>
+    <link rel="stylesheet" href="MIS3371hw4RLstyle.css">
+    <script src="MIS3371hw4RLscript.js" defer></script>
+</head>
+<body>
+    <div id="welcome-msg"></div>
+
+    <div class="header-container sticky-header">
+        <div class="logo-name">
+            <img src="hospitallogo.png" alt="I-Fast Care Logo" id="logo">
+            <span class="company-title">I-Fast Care Medical</span>
+        </div>
+         <!-- Google Maps Embed-->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d110931.256242375!2d-95.3698!3d29.7604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1715000000000" width="200" height="60" style="border:0;"></iframe>
+        <div id="date-display"></div>
+    </div>
+
+    <div id="main-content">
+        <form id="patientForm" action="MIS3371thankyoupage.html" method="GET">
+            <table>
+                <tr>
+                    <td><label>Full Name*:</label></td>
+                    <td>
+                        <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
+                        <input type="text" id="mi" name="mi" placeholder="MI" style="width: 30px;">
+                        <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+                        <div class="error-msg" id="name-error"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Date of Birth*:</label></td>
+                    <td><input type="date" id="dob" name="dob" required></td>
+                </tr>
+                <tr>
+                    <td><label>Social Security*:</label></td>
+                    <td><input type="password" id="ssn" name="ssn" placeholder="xxx-xx-xxxx" maxlength="11" required></td>
+                </tr>
+                <tr>
+                    <td><label>Contact Info*:</label></td>
+                    <td>
+                        <input type="email" id="email" name="email" placeholder="email@domain.com" required>
+                        <input type="tel" id="phone" name="phone" placeholder="000-000-0000" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Address*:</label></td>
+                    <td>
+                        <input type="text" id="addr1" name="addr1" placeholder="Address 1" required>
+                        <input type="text" id="city" name="city" placeholder="City" required>
+                         <!-- Takes list of state from JSON-->
+                        <select id="state" name="state" required>
+                             <option value="">Loading...</option>
+                        </select>
+                        <input type="text" id="zip" name="zip" placeholder="Zip" maxlength="5" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>User ID*:</label></td>
+                    <td><input type="text" id="userid" name="userid" required></td>
+                </tr>
+                <tr>
+                    <td><label>Password*:</label></td>
+                    <td>
+                        <input type="password" id="pw1" name="password" required>
+                        <input type="password" id="pw2" required>
+                        <div class="error-msg" id="pw-error"></div>
+                    </td>
+                </tr>
+                 <!-- Inputs for how patient is feeling-->
+                 <tr>
+                    <td><label>Desired Salary Range*:</label></td>
+                    <td>
+                        $20k <input type="range" id="salaryRange" name="salary" min="20000" max="200000" step="5000"> $200k
+                        <span id="salaryDisplay">$110,000</span>
+                    </td>
+                </tr>
+                  <tr>
+                    <td><label>How are you feeling? (1-10)*:</label></td>
+                    <td>1 <input type="range" name="daysofar" min="1" max="10" required> 10</td>
+                </tr>
+                <tr>
+                    <td><label>Please describe your symptoms:</label></td>
+                    <td><textarea name="symptoms" rows="3" cols="50"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label>Medical History:</label></td>
+                    <td id="history-container"></td>
+                </tr>
+                 <tr>
+                    <td><label>Gender:*</label></td>
+                    <td>
+                        <input type="radio" name="gender" value="male" required> Male
+                        <input type="radio" name="gender" value="female" required> Female
+                        <input type="radio" name="gender" value="other" required> Other
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Are you sexually active?*:</label></td>
+                    <td>
+                        <input type="radio" name="sexuallyActive" value="yes" required> Yes
+                        <input type="radio" name="sexuallyActive" value="no" required> No
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>In the past 12 months, have you drank or done any drugs?*:</label></td>
+                    <td>
+                        <input type="radio" name="drugs" value="drank" required> Drank
+                        <input type="radio" name="drugs" value="drugs" required> Drugs
+                        <input type="radio" name="drugs" value="both" required> Both
+                        <input type="radio" name="drugs" value="none" required> None
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Are you depressed or have you had any suicidal thoughts recently?*:</label></td>
+                    <td>
+                        <input type="radio" name="depression" value="yes" required> Yes
+                        <input type="radio" name="depression" value="no" required> No
+                    </td>
+                </tr>
+                <!-- Remember Me Checkbox-->
+                <tr>
+                    <td><label>Remember Me:</label></td>
+                    <td><input type="checkbox" id="rememberMe" checked> <small>Keep me signed in (48hrs)</small></td>
+                </tr>
+                 <!-- Validate Button-->
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="button" onclick="validateEntireForm()">VALIDATE</button>
+                        <input type="submit" id="submitBtn" value="Submit" style="display:none;">
+                        <input type="reset" value="CLEAR" onclick="clearUserData()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="footer" class="fixed-footer">
+        <p>PO BOX 18293, Sugarland, TX 77496</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+/*
+    Name: Ricky Le
+    File: MIS3371hw4Rlstyle.css
+    Date Created: 2026-05-1
+    Date Updated: 2026-05-8
+    Purpose: MIS 3371 Homework 4, css styling for the patient registration form
+*/
+
+/*background color */
+body {
+    background-color: #fa9494; /* Light pink background from your drawing */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+h1 {
+    color: #db0000; /* Firebrick red */
+    font-family: Georgia, serif;
+}
+
+/* ID Selectors */
+
+.header-container {
+    display: flex;        
+    justify-content: space-between; 
+    align-items: center;         
+    padding: 10px 20px;
+}
+
+.logo-name {
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    height: 50px;                
+    margin-right: 15px;
+}
+
+.company-title {
+    font-size: 28px;
+    font-weight: bold;
+    font-style: italic;         
+}
+
+#date-display {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+#footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.error-msg {
+    color: #8b0000;
+    font-size: 0.85em;
+    font-weight: bold;
+    min-height: 1em;
+    display: block;
+}
+
+input:invalid {
+    border: 2px solid #ff0000;
+}
+
+#submitBtn {
+    background-color: #228b22; /* Green for go! */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Class and Attribute */
+table {
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+td {
+    padding: 10px;
+}
+
+input[type="submit"] {
+    background-color: #b22222;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #8b0000;
+}
+
+/* New additions as per requirements */
+.header-container.sticky-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001; /* Highest priority */
+    background-color: #fa9494;
+    border-bottom: 1px solid #8b0000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    height: 80px;
+}
+
+#welcome-msg {
+    position: fixed;
+    top: 80px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #333;
+    text-align: center;
+    padding: 8px 0;
+    font-weight: bold;
+    border-bottom: 2px solid #8b0000;
+    z-index: 1000;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+#main-content {
+    padding-top: 150px; 
+    padding-bottom: 100px; 
+}
+

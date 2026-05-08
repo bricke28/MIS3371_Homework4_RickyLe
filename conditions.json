@@ -1,0 +1,7 @@
+[
+    {"id": "diabetes", "label": "Diabetes"},
+    {"id": "hypertension", "label": "Hypertension"},
+    {"id": "asthma", "label": "Asthma"},
+    {"id": "cholesterol", "label": "High Cholesterol"},
+    {"id": "heart", "label": "Heart Disease"}
+]
